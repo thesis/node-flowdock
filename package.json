@@ -1,5 +1,5 @@
 {
-  "name": "flowdock",
+  "name": "@reloaddk/flowdock",
   "version": "0.10.0",
   "description": "Flowdock client library for node.js",
   "keywords": [
