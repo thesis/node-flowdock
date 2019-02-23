@@ -37,7 +37,6 @@
   },
   "scripts": {
     "build": "mkdir -p lib && coffee -c -o lib src",
-    "postinstall": "npm run build",
     "prepublishOnly": "npm run build",
     "test": "mocha --require coffeescript/register './test/**/*.coffee'",
     "clean": "rm -r lib",
