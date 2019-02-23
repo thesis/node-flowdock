@@ -1,6 +1,6 @@
 {
   "name": "flowdock",
-  "version": "0.9.1",
+  "version": "0.10.0",
   "description": "Flowdock client library for node.js",
   "keywords": [
     "flowdock"
@@ -12,6 +12,7 @@
   "bugs": {
     "url": "http://github.com/flowdock/node-flowdock"
   },
+  "license": "MIT",
   "licenses": [
     {
       "type": "MIT",
@@ -28,17 +29,22 @@
   },
   "dependencies": {
     "buffer-indexof": "^1.0.0",
-    "request": "~2.58.0"
+    "request": "^2.88.0"
   },
   "devDependencies": {
-    "coffee-script": "~1.9.3",
-    "mocha": "~2.2.5"
+    "coffeescript": "~1.9.3",
+    "mocha": "^6.0.1"
   },
   "scripts": {
-    "test": "make test",
-    "prepublish": "make build"
+    "build": "mkdir -p lib && coffee -c -o lib src",
+    "postinstall": "npm run build",
+    "prepublishOnly": "npm run build",
+    "test": "mocha --require coffeescript/register './test/**/*.coffee'",
+    "clean": "rm -r lib",
+    "dev": "coffee -wc --bare -o lib src"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=11.10.0",
+    "npm": ">=6.8.0"
   }
 }

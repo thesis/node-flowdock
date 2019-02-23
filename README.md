@@ -171,10 +171,11 @@ session.delete(path, function (err) {
 
 ## Development
 
-Run `npm install`. Code can be compiled to .js with command `make build`.
+Run `npm install`. Code can be compiled to .js with command `npm run build`.
 
 ## Changes
 
+- v. 0.10.0 - Updated packages to remove vulnerabilities, updated engine specifications and migrated Makefile target to package.json scripts.
 - v. 0.9.1 - Removed buffertools dependency and now uses event.EventEmitter instead of process.EventEmitter. (Thanks @valeriangalliat)
 - v. 0.9.0 - Updated dependencies to newest versions and added api wrappers (get, post, put, delete). Node 0.6 is no longer supported.
 - v. 0.8.2 - Newer buffertools to support node 0.11
