@@ -27,7 +27,7 @@ session.on('error', function () { /* noop */ });
 
 The library supports authenticating using both the [API token](http://www.flowdock.com/account/tokens) or a username and password.
 
-```
+```javascript
 var Session = require('flowdock').Session;
 // For API token auth...
 var s = new Session('deadbeefacdcabbacd')
@@ -175,6 +175,7 @@ Run `npm install`. Code can be compiled to .js with command `npm run build`.
 
 ## Changes
 
+- v. 0.10.1 - Correct repository paths in package.json.
 - v. 0.10.0 - Updated packages to remove vulnerabilities, updated engine specifications and migrated Makefile target to package.json scripts.
 - v. 0.9.1 - Removed buffertools dependency and now uses event.EventEmitter instead of process.EventEmitter. (Thanks @valeriangalliat)
 - v. 0.9.0 - Updated dependencies to newest versions and added api wrappers (get, post, put, delete). Node 0.6 is no longer supported.
