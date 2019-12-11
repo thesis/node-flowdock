@@ -88,8 +88,8 @@ class Session extends events.EventEmitter
     @put "/flows/#{organizationId}/#{flowId}/messages/#{messageId}", data, callback
 
   # API access
-  post: (path, data, cb) ->
-    @_request('post', path, data, cb)
+  post: (path, data, callbackOrExtraHeaders, cb=undefined) ->
+    @_request('post', path, data, callbackOrExtraHeaders, cb)
 
   get: (path, data, cb) ->
     @_request('get', path, data, cb)
@@ -100,21 +100,32 @@ class Session extends events.EventEmitter
   delete: (path, cb) ->
     @_request('delete', path, {}, cb)
 
-  _request: (method, path, data, cb) ->
+  _request: (method, path, data, callbackOrExtraHeaders, cb=undefined) ->
     uri = @baseURL()
     uri.pathname = path
     if method.toLowerCase() == 'get'
       qs = data
       data = {}
+
+    baseHeaders =
+      'Authorization': @auth
+      'Accept': 'application/json'
+      'Content-Type': 'application/json'
+
+    if cb?
+      extraHeaders = callbackOrExtraHeaders
+    else
+      extraHeaders = {}
+      cb = callbackOrExtraHeaders
+
+    headers = Object.assign(baseHeaders, extraHeaders)
+
     options =
       uri: url.format(uri)
       method: method
       json: data
       qs: qs
-      headers:
-        'Authorization': @auth
-        'Accept': 'application/json'
-        'Content-Type': 'application/json'
+      headers: headers
 
     request options, (err, res, body) =>
       if err
