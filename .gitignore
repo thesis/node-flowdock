@@ -1,2 +1,2 @@
-lib/
+# lib/ # thesis-only: commit built files to repo while testing fork
 node_modules/
